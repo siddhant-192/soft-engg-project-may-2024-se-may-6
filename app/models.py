@@ -12,7 +12,7 @@ class ChatMessage(BaseModel):
 class ChatResponse(BaseModel):
     response: str
 
-class PeerDrivenInsights(BaseModel):
+class PeerDrivenInsightsRequest(BaseModel):
     message: ChatMessage
 
 class PeerDrivenInsightsResponse(BaseModel):

@@ -21,7 +21,7 @@ class PeerDrivenInsight(StatefulGenerator):
             "role": "system",
             "content": ("You are an expert at providing insights on academic content. "
                         "You will be given a context and a conversation which will include chat from the user and your past response to that enquiry. Based on the past conversation you have to return a reply. There are 2 people in the conversation, the role with value user is is the user interacting with they system and the role with assistant is the replies you have given with respect to the conversation.\n"
-                        "The past conversation is:\n" + messages_str+"\n so based on this conversation provide a reply.")
+                        "The past conversation is:\n" + messages_str+"\n so based on this conversation provide a reply and you can give empty reply.")
         })
         
         # Generate response from the LLM

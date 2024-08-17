@@ -13,7 +13,7 @@ from models import (
     CodeAssistantRequest, 
     CodeAssistantResponse, 
     CourseSummariesRequest, 
-    PeerDrivenInsights, 
+    PeerDrivenInsightsRequest, 
     PopQuizRequest, 
     PeerDrivenInsightsResponse, 
     SupportAssistantRequest, 
