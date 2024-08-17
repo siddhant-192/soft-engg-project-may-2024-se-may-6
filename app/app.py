@@ -42,21 +42,26 @@ app.add_middleware(
 
 # Stateful Generators
 @app.post("/api/v1/peer_driven_insights", response_model=PeerDrivenInsightsResponse)
-async def process_peer_driven_insights(insights: PeerDrivenInsights):
-    insight_generator = PeerDrivenInsight(insights.message.context)
-    response = ChatResponse(
-        response=insight_generator.chat(insights.message.context, insights.message.messages)
-    )
-    return PeerDrivenInsightsResponse(response=response)
+async def process_peer_driven_insights(insights: PeerDrivenInsightsRequest):
+    # Instantiate the logic class PeerDrivenInsight
+    insight_generator = PeerDrivenInsight()  # Notice we are using PeerDrivenInsight, not PeerDrivenInsightsRequest
+    # Generate the response using the chat method
+    response_content = insight_generator.chat(insights.message.messages)
+    
+    # Wrap the response in the correct Pydantic model
+    return PeerDrivenInsightsResponse(response=ChatResponse(response=response_content))
+
 
 @app.post("/api/v1/support_assistant", response_model=SupportAssistantResponse)
 async def process_support_assistant(assistant: SupportAssistantRequest):
     # Create an instance of your logic class SupportAssistant
     support_assistant = SupportAssistant(assistant.course_id)
-    # Generate response using your logic class
+    
+    # Generate response using your logic class, ensuring Pydantic messages are handled correctly
     response_content = support_assistant.chat(assistant.message.context, assistant.message.messages)
+    
     # Return the response wrapped in the Pydantic response model
-    return SupportAssistantResponse(response=response_content)
+    return SupportAssistantResponse(response=ChatResponse(response=response_content))
 
 
 @app.post("/api/v1/code_assistant", response_model=CodeAssistantResponse)
