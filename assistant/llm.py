@@ -11,7 +11,7 @@ client = Groq(
 )
 
 class LLM:
-    def __init__(self, model="llama3-8b-8192"):
+    def __init__(self, model="llama3-70b-8192"):
         self.model = model
         self.client = Groq(
             api_key=os.environ.get("GROQ_API_KEY"),
