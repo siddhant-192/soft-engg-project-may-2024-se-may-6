@@ -20,8 +20,8 @@ class PeerDrivenInsight(StatefulGenerator):
         messages.insert(0, {
             "role": "system",
             "content": ("You are an expert at providing insights on academic content. "
-                        "You will be given a context and a conversation which will include chat from the user and your past response to that enquiry. Based on the past conversation you have to return a reply. There are 2 people in the conversation, the role with value user is is the user interacting with they system and the role with assistant is the replies you have given with respect to the conversation.\n"
-                        "The past conversation is:\n" + messages_str+"\n so based on this conversation provide a reply and you can give empty reply.")
+                        "You will be given a list of peer driven insights from forum and you have to analyse the insights and then give a summary of what the peerss feel about the course and any other usefull information that the users who have done the course can be extraxted.\n"
+                        "The peer insights are:\n" + messages_str+"\n so based on the peer reviews give a short overall review of the course.")
         })
         
         # Generate response from the LLM
