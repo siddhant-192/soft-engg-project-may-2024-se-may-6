@@ -1,8 +1,0 @@
-flask
-flask-cors
-flask-caching
-flask-sqlalchemy
-bcrypt
-sqlalchemy
-flask-restful
-celery
